@@ -1,5 +1,7 @@
 # Craft Server Installer
 
+[简体中文](README-chs.md)
+
 Minecraft Server automatic installer
 
 ## Usage
