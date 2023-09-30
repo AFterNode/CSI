@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exe4j version="9.0" transformSequenceNumber="3">
+  <directoryPresets config="D:/WORKSPACE/Java/CSI/e4j" />
+  <application name="CSI" distributionSourceDir="D:/WORKSPACE/Java/CSI/e4j" />
+  <executable name="CraftServerInstaller" wrapperType="embed" executableMode="gui" singleInstance="true" executionLevel="highestAvailable" checkConsoleParameter="true">
+    <versionInfo include="true" fileVersion="1.0" fileDescription="Minecraft Server Installer" internalName="CSI" productVersion="1.0" />
+  </executable>
+  <java mainClass="cn.afternode.csi.Main" allowVMPassthroughParameters="false" preferredVM="client" minVersion="17" maxVersion="20" allowBetaVM="true">
+    <classPath>
+      <archive location="D:/WORKSPACE/Java/CSI/e4j/build.jar" failOnError="false" />
+    </classPath>
+  </java>
+</exe4j>

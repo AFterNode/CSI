@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.20-Beta2'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'cn.afternode'
+version = '1.0.0'
+
+repositories {
+    maven { url "https://maven.aliyun.com/repository/central" }
+    mavenCentral()
+}
+
+configurations {
+    include
+    implementation.extendsFrom(include)
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    include 'org.apache.httpcomponents.client5:httpclient5-fluent:5.3-alpha1'
+    include 'com.google.code.gson:gson:2.10.1'
+    include "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    include 'com.formdev:flatlaf:3.2.1'
+    include 'com.formdev:flatlaf-intellij-themes:3.2.1'
+
+}
+
+jar.manifest {
+    attributes "Main-Class": "cn.afternode.csi.Main"
+}
+
+test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
+}
+
+shadowJar {
+    configurations = [project.configurations.include]
+}
