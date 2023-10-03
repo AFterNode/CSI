@@ -47,6 +47,11 @@ new FormModel {
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MainWindow.serverOptions.tab.title" )
 				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "mcdr"
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "MainWindow.mcdr.tab.title" )
+				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
 					"columns": 1
 					"rows": 5

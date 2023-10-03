@@ -1,0 +1,81 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "17.0.8" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "lang"
+	"i18n.bundleName": "mcdr"
+	"i18n.autoExternalize": true
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tp"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "pnInstallation"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 2
+					} ) {
+						name: "pnMcdrSetup"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnInstallMcdr"
+							"text": new FormMessage( null, "btnInstallMcdr.text" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "installMcdr", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnSetupMcdr"
+							"text": new FormMessage( null, "btnSetupMcdr.text" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "setupMcdr", true ) )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "South"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "pnInstallation.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+					"columns": 1
+					"rows": 6
+				} ) {
+					name: "pnPython"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 2
+					} ) {
+						name: "kvPythonBin"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lbPythonBin"
+							"text": new FormMessage( null, "lbPythonBin.text" )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "tfPythonBin"
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 2
+					} ) {
+						name: "kvPypiMirror"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lbPypiMirror"
+							"text": new FormMessage( null, "lbPypiMirror.text" )
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "cbPypiMirror"
+							addEvent( new FormEvent( "java.awt.event.ComponentListener", "componentShown", "initPypiMirror", true ) )
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "btnSavePython"
+						"text": new FormMessage( null, "btnSavePython.text" )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "savePython", true ) )
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "pnPython.tab.title" )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 805, 550 )
+		} )
+	}
+}

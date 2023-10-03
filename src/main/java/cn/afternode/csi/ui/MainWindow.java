@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.util.*;
 import cn.afternode.csi.CSI;
 import cn.afternode.csi.ui.config.DefaultServerConfig;
+import cn.afternode.csi.ui.mcdr.UiMCDR;
 import cn.afternode.csi.ui.mwpanels.InstallerPanel;
 import cn.afternode.csi.utils.SubConfig;
 import com.google.gson.Gson;
@@ -23,15 +24,22 @@ import javax.swing.*;
  */
 public class MainWindow extends JFrame {
     public MainWindow() {
-        initComponents();
+        try {
+            initComponents();
 
-        installer.add(new InstallerPanel());
+            installer.add(new InstallerPanel());
+            mcdr.add(new UiMCDR());
 
-        // region:Settings
-        tfInstallDir.setText(CSI.INSTANCE.getConfig().installDir);
-        tbUseBmclapi.setSelected(CSI.INSTANCE.getConfig().useBmclApi);
-        tfJavaExec.setText(CSI.INSTANCE.getConfig().javaExec);
-        // endregion
+            // region:Settings
+            tfInstallDir.setText(CSI.INSTANCE.getConfig().installDir);
+            tbUseBmclapi.setSelected(CSI.INSTANCE.getConfig().useBmclApi);
+            tfJavaExec.setText(CSI.INSTANCE.getConfig().javaExec);
+            // endregion
+        } catch (Throwable t) {
+            JOptionPane.showMessageDialog(this, "Fatal error occurred in MainWindow initialization: " + t);
+            t.printStackTrace();
+            CSI.INSTANCE.handleExit(1);
+        }
     }
 
     private void thisWindowOpened(WindowEvent e) {
@@ -83,6 +91,7 @@ public class MainWindow extends JFrame {
         serverOptions = new JPanel();
         btnRefresh = new JButton();
         tpServerOptions = new JTabbedPane();
+        mcdr = new JPanel();
         settings = new JPanel();
         kvInstallDir = new JPanel();
         lbInstallDir = new JLabel();
@@ -142,6 +151,12 @@ public class MainWindow extends JFrame {
             }
             tp.addTab(bundle.getString("MainWindow.serverOptions.tab.title"), serverOptions);
 
+            //======== mcdr ========
+            {
+                mcdr.setLayout(new BorderLayout());
+            }
+            tp.addTab(bundle.getString("MainWindow.mcdr.tab.title"), mcdr);
+
             //======== settings ========
             {
                 settings.setLayout(new GridLayout(5, 1));
@@ -197,6 +212,7 @@ public class MainWindow extends JFrame {
     private JPanel serverOptions;
     private JButton btnRefresh;
     private JTabbedPane tpServerOptions;
+    private JPanel mcdr;
     private JPanel settings;
     private JPanel kvInstallDir;
     private JLabel lbInstallDir;

@@ -6,14 +6,17 @@ import cn.afternode.csi.installer.impl.Mohist
 import cn.afternode.csi.installer.impl.Paper
 import cn.afternode.csi.ui.MainWindow
 import cn.afternode.csi.utils.Configuration
+import cn.afternode.csi.utils.MCDRConfiguration
 import com.google.gson.GsonBuilder
 import javax.swing.JOptionPane
 import kotlin.system.exitProcess
 
 object CSI {
-    @JvmStatic val GSON = GsonBuilder().setPrettyPrinting().create()
+    @JvmField val GSON = GsonBuilder().setPrettyPrinting().create()
 
     lateinit var config: Configuration
+        private set
+    lateinit var mcdrConfig: MCDRConfiguration
         private set
     lateinit var fileManager: FileManager
         private set
@@ -31,6 +34,7 @@ object CSI {
                 .register(Mohist())
 
             config = fileManager.loadConfig()
+            mcdrConfig = fileManager.loadMCDRConfig()
 
             mainWindow = MainWindow()
             mainWindow.isVisible = true
@@ -42,7 +46,8 @@ object CSI {
 
     fun handleExit(status: Int) {
         try {
-            FileManager.configFile.writeText(GSON.toJson(config), Charsets.UTF_8)
+            fileManager.saveConfig(config)
+            fileManager.saveMCDRConfig(mcdrConfig)
         } catch (t: Throwable) {
             t.printStackTrace()
         }
@@ -52,5 +57,11 @@ object CSI {
 
     fun handleExit() {
         handleExit(0)
+    }
+
+    @JvmStatic
+    fun info(info: String){
+        mainWindow.lbInformation.text = info
+        println(info)
     }
 }
