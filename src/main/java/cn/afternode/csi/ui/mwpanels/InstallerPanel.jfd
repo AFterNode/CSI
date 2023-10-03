@@ -1,0 +1,83 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "17.0.8" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "lang"
+	"i18n.bundleName": "main"
+	"i18n.keyPrefix": "InstallerPanel"
+	"i18n.autoExternalize": true
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "installer"
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "tpInstaller"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "tpPaper"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnRefreshPaper"
+							"text": new FormMessage( null, "InstallerPanel.btnRefreshPaper.text" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "refreshPaper", true ) )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "btnRefreshPaperMouseClicked", true ) )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "South"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+							"columns": 2
+							"rows": 4
+						} ) {
+							name: "pnPaper"
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "cbPaperVersion"
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnInstall"
+								"text": new FormMessage( null, "InstallerPanel.btnInstall.text" )
+								"actionCommand": "Install"
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "installPaper", true ) )
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Paper"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "tpForge"
+					}, new FormLayoutConstraints( null ) {
+						"title": "Forge"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 1
+						"rows": 4
+					} ) {
+						name: "tpMohist"
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "cbMohistVersions"
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnMohistRefresh"
+							"text": new FormMessage( null, "InstallerPanel.btnMohistRefresh.text" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "refreshMohist", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnMohistInstall"
+							"text": new FormMessage( null, "InstallerPanel.btnMohistInstall.text" )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "installMohist", true ) )
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "InstallerPanel.tpMohist.tab.title" )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 660, 385 )
+		} )
+	}
+}

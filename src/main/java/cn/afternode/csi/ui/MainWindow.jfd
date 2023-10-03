@@ -1,0 +1,99 @@
+JFDML JFormDesigner: "8.1.1.0.298" Java: "17.0.8" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "lang"
+	"i18n.bundleName": "main"
+	"i18n.keyPrefix": "MainWindow"
+	"i18n.autoExternalize": true
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"$sizePolicy": 1
+			"title": new FormMessage( null, "MainWindow.title" )
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowOpened", "thisWindowOpened", true ) )
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosing", "thisWindowClosing", true ) )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lbInformation"
+				"text": "Information"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tp"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "installer"
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "MainWindow.installer.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "serverOptions"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "btnRefresh"
+						"text": new FormMessage( null, "MainWindow.btnRefresh.text" )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "btnRefreshMouseClicked", true ) )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "South"
+					} )
+					add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+						name: "tpServerOptions"
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "MainWindow.serverOptions.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+					"columns": 1
+					"rows": 5
+				} ) {
+					name: "settings"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 2
+					} ) {
+						name: "kvInstallDir"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lbInstallDir"
+							"text": new FormMessage( null, "MainWindow.lbInstallDir.text" )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "tfInstallDir"
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+						"columns": 2
+					} ) {
+						name: "kvJavaExec"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lbJavaExec"
+							"text": new FormMessage( null, "MainWindow.lbJavaExec.text" )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "tfJavaExec"
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JToggleButton" ) {
+						name: "tbUseBmclapi"
+						"text": new FormMessage( null, "MainWindow.tbUseBmclapi.text" )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "Save"
+						"text": new FormMessage( null, "MainWindow.Save.text" )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "SaveMouseClicked", true ) )
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "MainWindow.settings.tab.title" )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 785, 490 )
+		} )
+	}
+}
