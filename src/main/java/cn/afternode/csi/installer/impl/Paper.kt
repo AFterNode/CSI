@@ -70,7 +70,7 @@ class Paper: Installer {
                 launchScript.writeText("\"${CSI.config.javaExec}\" -Xms1G -Xmx${CSI.config.ram} -Dfile.encoding=UTF-8 -jar paper.jar nogui", Charsets.UTF_8)
                 println("Running Paperclip...")
                 CSI.mainWindow.lbInformation.text = "Running Paperclip..."
-                val proc = Runtime.getRuntime().exec(launchScript.readText(Charsets.UTF_8))
+                val proc = Runtime.getRuntime().exec(launchScript.readText(Charsets.UTF_8), emptyArray(), CSI.config.getInstallDir())
                 println("Paperclip started as ${proc.pid()}")
                 proc.waitFor()
                 println("Paperclip exited with code ${proc.exitValue()}")
